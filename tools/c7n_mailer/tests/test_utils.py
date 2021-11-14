@@ -142,7 +142,20 @@ class ResourceFormat(unittest.TestCase):
             "trail-x",
         )
 
-
+    def test_service_quota(self):
+        self.assertEqual(
+            utils.resource_format(
+                {
+                    "ServiceName": "Amazon EC2 Auto Scaling",
+                    "QuotaName": "Auto Scaling groups per region",
+                    "c7n:UsageMetric": {
+                        "metric": 54,
+                        "quota": 200
+                    }
+                },
+                'service-quota'),
+            'ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region Quota: 200 Usage: 54 \n',
+        )
 class GetAwsUsernameFromEvent(unittest.TestCase):
 
     # note principalId is very org/domain specific for federated?, it would be
