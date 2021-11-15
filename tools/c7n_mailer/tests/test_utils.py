@@ -113,8 +113,8 @@ class ResourceFormat(unittest.TestCase):
         self.assertEqual(
             utils.resource_format(
                 {'LoadBalancerArn':
-                    'arn:aws:elasticloadbalancing:us-east-1:367930536793:'
-                    'loadbalancer/app/dev/1234567890',
+                     'arn:aws:elasticloadbalancing:us-east-1:367930536793:'
+                     'loadbalancer/app/dev/1234567890',
                  'AvailabilityZones': [], 'Scheme': 'internal'},
                 'app-elb'),
             'arn: arn:aws:elasticloadbalancing:us-east-1:367930536793:'
@@ -154,10 +154,12 @@ class ResourceFormat(unittest.TestCase):
                     }
                 },
                 'service-quota'),
-            'ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region Quota: 200 Usage: 54 \n',
+            'ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region '
+            'Quota: 200 Usage: 54 \n',
         )
-class GetAwsUsernameFromEvent(unittest.TestCase):
 
+
+class GetAwsUsernameFromEvent(unittest.TestCase):
     # note principalId is very org/domain specific for federated?, it would be
     # good to get confirmation from capone on this event / test.
     CLOUDTRAIL_EVENT = {
@@ -391,7 +393,8 @@ class OtherTests(unittest.TestCase):
     def test_get_message_subject(self):
         subject = utils.get_message_subject(SQS_MESSAGE_1)
         self.assertEqual(subject,
-        SQS_MESSAGE_1['action']['subject'].replace('{{ account }}', SQS_MESSAGE_1['account']))
+                         SQS_MESSAGE_1['action']['subject'].replace('{{ account }}',
+                                                                    SQS_MESSAGE_1['account']))
 
     def test_kms_decrypt(self):
         config = {'test': {'secret': 'mysecretpassword'}}
