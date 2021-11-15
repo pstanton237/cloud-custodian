@@ -112,9 +112,8 @@ class ResourceFormat(unittest.TestCase):
     def test_alb(self):
         self.assertEqual(
             utils.resource_format(
-                {'LoadBalancerArn':
-                     'arn:aws:elasticloadbalancing:us-east-1:367930536793:'
-                     'loadbalancer/app/dev/1234567890',
+                {'LoadBalancerArn': 'arn:aws:elasticloadbalancing:us-east-1:367930536793'
+                                    ':loadbalancer/app/dev/1234567890',
                  'AvailabilityZones': [], 'Scheme': 'internal'},
                 'app-elb'),
             'arn: arn:aws:elasticloadbalancing:us-east-1:367930536793:'
@@ -148,14 +147,12 @@ class ResourceFormat(unittest.TestCase):
                 {
                     "ServiceName": "Amazon EC2 Auto Scaling",
                     "QuotaName": "Auto Scaling groups per region",
-                    "c7n:UsageMetric": {
-                        "metric": 54,
-                        "quota": 200
-                    }
+                    "c7n:UsageMetric": {"metric": 54, "quota": 200},
                 },
-                'service-quota'),
-            'ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region '
-            'Quota: 200 Usage: 54 \n',
+                "service-quota",
+            ),
+            "ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region "
+            "Quota: 200 Usage: 54 \n",
         )
 
 
