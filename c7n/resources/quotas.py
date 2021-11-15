@@ -151,7 +151,7 @@ class UsageFilter(MetricsFilter):
         client = local_session(self.manager.session_factory).client('cloudwatch')
 
         end_time = datetime.utcnow()
-        start_time = end_time - timedelta(1)
+        start_time = end_time - timedelta(minutes=15)
 
         limit = self.data.get('limit', 80)
 
