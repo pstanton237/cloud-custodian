@@ -152,7 +152,7 @@ class ResourceFormat(unittest.TestCase):
                 "service-quota",
             ),
             "ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region "
-            "Quota: 200 Usage: 54 \n",
+            "Quota: 200 Usage: 54\n",
         )
 
 
