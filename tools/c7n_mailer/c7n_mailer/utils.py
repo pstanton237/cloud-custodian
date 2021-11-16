@@ -355,12 +355,18 @@ def resource_format(resource, resource_type):
             resource['FunctionName'],
             resource['Runtime'])
     elif resource_type == 'service-quota':
-        return "ServiceName: %s QuotaName: %s Quota: %i Usage: %i\n" % (
-            resource['ServiceName'],
-            resource['QuotaName'],
-            resource['c7n:UsageMetric']['quota'],
-            resource['c7n:UsageMetric']['metric']
-        )
+        try:
+            return "ServiceName: %s QuotaName: %s Quota: %i Usage: %i\n" % (
+                resource['ServiceName'],
+                resource['QuotaName'],
+                resource['c7n:UsageMetric']['quota'],
+                resource['c7n:UsageMetric']['metric']
+            )
+        except KeyError:
+            return "ServiceName: %s QuotaName: %s\n" % (
+                resource['ServiceName'],
+                resource['QuotaName'],
+            )
     else:
         return "%s" % format_struct(resource)
 
