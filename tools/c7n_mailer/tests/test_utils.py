@@ -152,7 +152,22 @@ class ResourceFormat(unittest.TestCase):
                 "service-quota",
             ),
             "ServiceName: Amazon EC2 Auto Scaling QuotaName: Auto Scaling groups per region "
-            "Quota: 200 Usage: 54\n",
+            "Quota: 200 Usage: 54\n"
+        )
+
+    def test_service_quota_none_usagemetric(self):
+        self.assertEqual(
+            utils.resource_format(
+                {
+                    "ServiceName": "AWS Cloud Map",
+                    "QuotaName": "Namespaces per Region",
+                    "c7n:MatchedFilters": [
+                        "UsageMetric"
+                    ]
+                },
+                "service-quota",
+            ),
+            "ServiceName: AWS Cloud Map QuotaName: Namespaces per Region\n"
         )
 
 
